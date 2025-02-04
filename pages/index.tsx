@@ -1,19 +1,17 @@
 import Head from "next/head";
-import Image from "next/image";
-import { Geist, Geist_Mono } from "next/font/google";
-import styles from "@/styles/Home.module.css";
+import {  Noto_Sans_KR } from "next/font/google";
+import { Button, Htag, P, Rating, Tag } from "@/components";
+import { JSX, useState } from "react";
+import {  withLayout } from "@/layout/Layout";
+import { GetStaticProps } from "next";
+import axios from 'axios';
+import { MenuItem } from "@/interfaces/menu.interface";
+import { API } from "@/helpers/api";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+const notoSans = Noto_Sans_KR({ subsets: ['cyrillic'], weight: ['100' , '200' , '300', '400' , '500' , '600' , '700' , '800' , '900' ] });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-export default function Home() {
+function Home({menu}: HomeProps): JSX.Element {
+  const [rating, setRating] = useState(0);
   return (
     <>
       <Head>
@@ -23,95 +21,47 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div
-        className={`${styles.page} ${geistSans.variable} ${geistMono.variable}`}
+        className={`${notoSans.className} `}
       >
-        <main className={styles.main}>
-          <Image
-            className={styles.logo}
-            src="/next.svg"
-            alt="Next.js logo"
-            width={180}
-            height={38}
-            priority
-          />
-          <ol>
-            <li>
-              Get started by editing <code>pages/index.tsx</code>.
-            </li>
-            <li>Save and see your changes instantly.</li>
-          </ol>
+        <Htag>Htag</Htag>
+        <Htag tag='h2'>Htag1</Htag>
+        <Htag tag='h3'>Htag2</Htag>
+        <P>PPPPPPPPPPPPPPPPPP</P>
+        <Button appearance='primary'>В корзину</Button>
+        <Button appearance='default'>В корзину</Button>
+        <Tag type='green'>-10руб</Tag>
+        <Tag>-10руб</Tag>
+        <Tag type='red'>-10руб</Tag>
+        <Tag type='grey'>-10руб</Tag>
+        <Tag type='puple'>-10руб</Tag>
+        <Rating rating={rating} setRating={setRating}/>
+        <ul>{menu.map((i,index) => <li key={index}>{ i._id.secondCategory }</li>)}</ul>
 
-          <div className={styles.ctas}>
-            <a
-              className={styles.primary}
-              href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Image
-                className={styles.logo}
-                src="/vercel.svg"
-                alt="Vercel logomark"
-                width={20}
-                height={20}
-              />
-              Deploy now
-            </a>
-            <a
-              href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.secondary}
-            >
-              Read our docs
-            </a>
-          </div>
-        </main>
-        <footer className={styles.footer}>
-          <a
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              aria-hidden
-              src="/file.svg"
-              alt="File icon"
-              width={16}
-              height={16}
-            />
-            Learn
-          </a>
-          <a
-            href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              aria-hidden
-              src="/window.svg"
-              alt="Window icon"
-              width={16}
-              height={16}
-            />
-            Examples
-          </a>
-          <a
-            href="https://nextjs.org?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              aria-hidden
-              src="/globe.svg"
-              alt="Globe icon"
-              width={16}
-              height={16}
-            />
-            Go to nextjs.org →
-          </a>
-        </footer>
       </div>
     </>
   );
+}
+
+export default withLayout(Home);
+
+
+
+export const getStaticProps: GetStaticProps = async () => {
+  const firstCategory = 0;
+	const { data: menu } = await axios.post<MenuItem[]>(API.topPage.find, {
+		firstCategory
+	});
+
+	return {
+		props: {
+			menu,
+			firstCategory
+		}
+	};
+}
+
+
+interface HomeProps extends Record<string, unknown> {
+  menu: MenuItem[];
+
 }

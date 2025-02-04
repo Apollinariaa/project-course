@@ -1,8 +1,8 @@
-import { Html, Head, Main, NextScript } from "next/document";
+import Document, { Html, Head, Main, NextScript, DocumentContext, DocumentInitialProps } from 'next/document';
 
-export default function Document() {
+const MyDocument = () => {
   return (
-    <Html lang="en">
+    <Html lang="ru">
       <Head />
       <body>
         <Main />
@@ -10,4 +10,11 @@ export default function Document() {
       </body>
     </Html>
   );
-}
+};
+
+MyDocument.getInitialProps = async (ctx: DocumentContext): Promise<DocumentInitialProps> => {
+  const initialProps = await Document.getInitialProps(ctx);
+  return { ...initialProps };
+};
+
+export default MyDocument;
