@@ -15,7 +15,7 @@ export const Layout = ({children}: LayoutProps): JSX.Element => {
         <div className={cn(styles.wrapper, notoSans.className)}>
             <Header className={styles.header}/>
             <Sidebar/>
-            <div className={styles.body}>
+            <div className={styles.body} style={{overflow: 'hidden'}}>
                 {children}
             </div>
             <Footer className={styles.footer}/>

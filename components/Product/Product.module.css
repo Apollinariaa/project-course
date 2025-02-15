@@ -1,162 +1,149 @@
 .product {
-	display: grid;
-	grid-template-columns:
-		[start] 70px [logoend] 30px [titlestart] calc(50% - 100px) [middle] 1fr [pricestart] auto [priceend] 40px [creditstart] auto [creditend] 40px [ratestart] auto [end];
-
-
-	margin-top: 30px;
-	padding: 30px;
-}
-
-.logo {
-	grid-column: start / logoend;
-	grid-row: 1 / span 2;
-}
-
-.title,
-.tags {
-	grid-column: titlestart / middle;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    margin-top: 30px;
 }
 
 .price,
 .priceTitle {
-	grid-column: pricestart / priceend;
-
-	white-space: nowrap;
+    white-space: nowrap;
 }
 
-
-.credit,
-.creditTitle {
-	grid-column: creditstart / creditend;
+.box_card {
+    display: flex;
+    flex-direction: row;
 }
 
 .rating,
 .rateTitle {
-	grid-column: ratestart / end;
-
-	white-space: nowrap;
+    white-space: nowrap;
 }
 
-.hr,
-.description,
-.actions {
-	grid-column: start / end;
+.prices {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-right: 20px;
+}
+
+.div_rating,
+.block_credit,
+.block_price {
+    display: flex;
+    flex-direction: column;
 }
 
 .feature {
-	grid-column: start / middle;
+    margin-bottom: 10px;
 }
 
 .logo img {
-	border-radius: 5px;
+    border-radius: 5px;
+    margin-right: 10px;
 }
 
 .title {
-	align-self: flex-end;
-
-	font-size: 20px;
-	font-weight: 600;
-	line-height: 27px;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 27px;
+    margin-right: 10px;
 }
 
 .category {
-	margin-top: 7px;
+    margin-top: 7px;
 }
 
 .price,
 .credit {
-	align-self: flex-end;
-
-	font-size: 20px;
-	line-height: 27px;
+    font-size: 20px;
+    line-height: 27px;
 }
 
 .month {
-	font-size: 14px;
-	line-height: 19px;
+    font-size: 14px;
+    line-height: 19px;
 }
 
 .oldPrice {
-	margin-left: 5px;
-}
-
-.rating {
-	align-self: flex-end;
+    margin-left: 5px;
 }
 
 .description {
-	margin-bottom: 15px;
-
-	font-size: 16px;
-	line-height: 24px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    line-height: 24px;
 }
 
 .priceTitle,
 .creditTitle,
 .rateTitle {
-	font-size: 14px;
-	font-weight: 300;
-	line-height: 19px;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 19px;
 }
 
 .reviewButton {
-	margin-left: 20px;
+    margin-left: 20px;
 }
 
 .advBlock {
-	font-size: 16px;
-	line-height: 22px;
-	grid-column: middle / end;
+    font-size: 16px;
+    line-height: 22px;
+    grid-column: middle / end;
 }
 
 .advTitle {
-	margin-bottom: 5px;
-
-	font-weight: bold;
+    margin-bottom: 5px;
+    font-weight: bold;
 }
 
 .advantages {
-	margin-bottom: 20px;
-	padding-left: 15px;
-
-	border-left: 2px solid #1DC37E;
+    margin-bottom: 20px;
+    padding-left: 15px;
+    border-left: 2px solid #1dc37e;
 }
 
 .disadvantages {
-	padding-left: 15px;
-
-	border-left: 2px solid var(--red);
+    padding-left: 15px;
+    border-left: 2px solid var(--red);
 }
 
 .characteristics {
-	display: grid;
-	align-items: baseline;
-
-	padding-right: 60px;
-
-	font-size: 16px;
-	line-height: 32px;
-	grid-template-columns: auto 1fr auto;
-	gap: 10px;
+    display: grid;
+    align-items: baseline;
+    padding-right: 60px;
+    font-size: 16px;
+    line-height: 32px;
+    grid-template-columns: auto 1fr auto;
+    gap: 10px;
 }
 
 .characteristicsName {
-	font-weight: bold;
+    font-weight: bold;
 }
 
 .characteristicsDots {
-	margin-bottom: 5px;
-
-	border-bottom: 1px dashed var(--gray-light);
+    margin-bottom: 5px;
+    border-bottom: 1px dashed var(--gray-light);
 }
 
 .reviews {
-	overflow: hidden;
-
-	padding: 30px;
+    overflow: hidden;
+    padding: 30px;
 }
 
 .rateTitle a {
-	color: var(--primary);
+    color: var(--primary);
+}
+
+@media (max-width: 1190px) {
+    .box_card {
+        flex-direction: column;
+    }
+
+    .prices,
+    .div_rating {
+        margin-bottom: 20px;
+    }
 }

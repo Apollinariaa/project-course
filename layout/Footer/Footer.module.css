@@ -1,6 +1,6 @@
 .footer {
     display: grid;
-    grid-template-columns: 1fr auto auto;
+    grid-template-columns: minmax(500px, 700px) auto auto;
     gap: 10px 40px;
     padding: 23px 32px;
     color: var(--white);
@@ -12,7 +12,7 @@
 }
 
 
-@media (max-width: 765px) {
+@media (max-width: 965px) {
     .footer {
         grid-template-columns: 1fr;
     }

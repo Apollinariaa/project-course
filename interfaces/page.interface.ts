@@ -1,8 +1,8 @@
 export enum TopLevelCategory {
-	Courses,
-	Services,
-	Books,
-	Products
+    Courses,
+    Services,
+    Books,
+    Products,
 }
 
 export interface Advantage {
@@ -23,7 +23,7 @@ export interface HhDate {
 export interface TopPageModel {
     tags: string[];
     _id: string;
-    secondCategory: string
+    secondCategory: string;
     alias: string;
     title: string;
     category: string;

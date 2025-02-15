@@ -1,14 +1,13 @@
 .wrapper {
 	display: grid;
-	grid-template-columns:  300px minmax(320px, 1200px) ;
+	grid-template-columns: 300px minmax(320px, 1200px) auto ;
 	grid-template-rows: 1fr;
 
 	min-height: 100vh;
 	gap: 0 40px;
 	grid-template-areas:
-		"header header"
-		"sidebar body"
-		"footer footer";
+		"sidebar body ."
+		"footer footer footer";
 }
 
 .header {
@@ -20,8 +19,8 @@
 }
 
 .body {
+	margin-top: 40px;
 	grid-area: body;
-
 	outline: none;
 }
 
