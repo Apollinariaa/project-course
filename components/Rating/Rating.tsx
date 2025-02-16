@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { ForwardedRef, JSX, forwardRef, useCallback, useEffect, useState } from 'react';
 import { RatingProps } from './Rating.props';
 import styles from './Rating.module.css';
@@ -52,7 +53,7 @@ export const Rating = forwardRef(
 
         useEffect(() => {
             constructRating(rating);
-        }, [rating]);
+        }, [constructRating, rating]);
 
         return (
             <div className={cn(styles.rating)} {...props} ref={ref}>
